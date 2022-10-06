@@ -8,17 +8,26 @@ const position = {
     z: 0
 };
 
-//Step 1
-const result = input.map(movement => {
+input.map(movement => {
     return movement.split(" ");
-}).map(([direction, magnitude]) => {
+}).map(([directive, magnitude]) => {
     magnitude = parseInt(magnitude);
-    return [direction, magnitude];
-}).map(([direction, magnitude]) => {
-    direction == "forward" ? position.x += magnitude
-    : direction == "down" ? position.z += magnitude
-    : direction == "up" ? position.z -= magnitude
-    : console.log(`Error: direction didn't match one of the accepted options: ${direction}`);
+    return [directive, magnitude];
+}).map(([directive, magnitude]) => {
+    switch (directive) {
+        case "forward": {
+            position.x += magnitude;
+            break;
+        }
+        case "down": {
+            position.z += magnitude;
+            break;
+        }
+        case "up": {
+            position.z -= magnitude;
+            break;
+        }
+    }
 });
 
 console.log("Position: ", position);
