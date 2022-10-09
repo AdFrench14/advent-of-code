@@ -4,7 +4,6 @@ let data = (fs.readFileSync(`${__dirname}/input.txt`, "utf-8")).split("\n").filt
 
 //Extract the calling numbers and parse into an array
 const calledNumbers = data.shift().trim().split(",").map(digit => parseInt(digit));
-console.log("calledNumbers", calledNumbers);
 
 //Parse the boards into arrays of numbers
 data = data.map(line => {
@@ -35,8 +34,9 @@ boards.map(board => {
 
 let completeBoardIndex;
 let winningNumber;
+let winningIndex;
 
-calledNumbers.map(calledNum => {
+calledNumbers.map((calledNum, calledIndex) => {
     if (!completeBoardIndex) {
         //Check the horizontal lines
         boards.map((board, boardIndex) => {
@@ -50,6 +50,7 @@ calledNumbers.map(calledNum => {
                     if (line.every(cell => cell == "called")) {
                         completeBoardIndex = boardIndex;
                         winningNumber = calledNum;
+                        winningIndex = calledIndex;
                     }
                 })
             }
@@ -67,6 +68,7 @@ calledNumbers.map(calledNum => {
                     if (line.every(cell => cell == "called")) {
                         completeBoardIndex = boardIndex;
                         winningNumber = calledNum;
+                        winningIndex = calledIndex;
                     }
                 })
             }
@@ -78,7 +80,6 @@ const sumOfWinningBoard = boards[completeBoardIndex].flat().filter(ele => ele !=
 
 console.log("Winning board: ", boards[completeBoardIndex]);
 console.log("Winning Num: ", winningNumber);
+console.log("Index Winning Num: ", winningIndex);
 console.log("Sum of Winning Board: ", sumOfWinningBoard);
 console.log("Winning Score: ", winningNumber * sumOfWinningBoard);
-
-//This solution seems very inefficient, I wonder if there is some way to do less interating
