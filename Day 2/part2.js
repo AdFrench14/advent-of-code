@@ -9,8 +9,7 @@ const position = {
 input.map(movement => {
     return movement.split(" ");
 }).map(([directive, magnitude]) => {
-    magnitude = parseInt(magnitude);
-    return [directive, magnitude];
+    return [directive, parseInt(magnitude)];
 }).map(([directive, magnitude]) => {
     switch (directive) {
         case "forward": {

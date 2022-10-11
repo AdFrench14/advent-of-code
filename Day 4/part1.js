@@ -16,6 +16,7 @@ while (data.length > 0) {
     boards.push(data.splice(0, 5));
 }
 
+//Adrien from the future: much like Day 3 Part 1, actually transposing the matrix was wasted effort. I improved my approach in part 2 i think.
 const transposedBoards = [];
 
 boards.map(board => {

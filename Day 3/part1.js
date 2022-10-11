@@ -1,21 +1,12 @@
 let input = require("./input.json");
 
-//take nth character of each binary num and place in a separate array
-//could use average to see what most common digit is. If avg > 0.5, it is 1
 const matrix = input.map(binaryString => {
     //turn the binary numbers into a matrix of integers
     return binaryString.split("").map(digit => parseInt(digit));
 });
 
-/*
-const matrix = [
-    [1,1,0],
-    [0,1,0],
-    [0,1,1]
-]
-*/
-
 //This step isn't strictly necessary since I could just do the calculations without actually transposing the matrix.
+//Adrien from the future: transposing the matrix turned out to be a bit of a waste - but I'm not going to refactor since this works anyway
 const transposedMatrix = [];
 
 for(let row = 0; row < matrix.length; row++) {

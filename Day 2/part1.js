@@ -10,9 +10,8 @@ const position = {
 
 input.map(movement => {
     return movement.split(" ");
-}).map(([directive, magnitude]) => {
-    magnitude = parseInt(magnitude);
-    return [directive, magnitude];
+}).map(([directive, magnitude]) => { //directive is the text part: forward, up, down
+    return [directive, parseInt(magnitude)];
 }).map(([directive, magnitude]) => {
     switch (directive) {
         case "forward": {
